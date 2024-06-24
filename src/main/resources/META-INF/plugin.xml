@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>com.drossan.cxserver</id>
+    <name>CX-Server</name>
+    <version>1.0.0</version>
+    <vendor email="hi@drossan.com" url="https://www.drossan.com">Drossan</vendor>
+    <description><![CDATA[
+    Levanta un servidor para páginas HTML enfocado en CX
+]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action
+                id="com.drossan.cxserver.RunCXServer"
+                class="com.drossan.cxserver.RunCXServerAction"
+                text="CX Server"
+                description="Run the instance server">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.drossan.cxserver.CXServerSettings"/>
+        <applicationConfigurable instance="com.drossan.cxserver.CXServerConfigurable"/>
+        <toolWindow id="CX Server"
+                    anchor="left"
+                    factoryClass="com.drossan.cxserver.CXServerToolWindowFactory"
+                    icon="/icons/cxserver.svg"/>
+    </extensions>
+
+</idea-plugin>
